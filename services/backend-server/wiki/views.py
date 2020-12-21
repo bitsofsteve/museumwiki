@@ -1,3 +1,14 @@
-from django.shortcuts import render
+from rest_framework import generics
 
-# Create your views here.
+from .models import Wiki
+from.serializers import WikiSerializer
+
+
+class WikiList(generics.ListCreateAPIView):
+    queryset = Wiki.objects.all()
+    serializer_class = WikiSerializer
+
+class WikiDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Wiki.objects.all()
+    serializer_class = WikiSerializer
+
