@@ -26,5 +26,18 @@ def test_add_wiki(client):
     assert response.status_code == 201
     assert response.data["name"] == "The British Musuem"
     wiki = Wiki.objects.all()
-    assert len(wiki) ==1
+    assert len(wiki) == 1
 
+@pytest.mark.django_db
+def test_add_wiki_invalid_json(client):
+    wiki = Wiki.objects.all()
+    assert len(wiki) == 0
+
+    response = client.post(
+        "/api/v1/wiki/",
+        {},
+        content_type='application/json'
+    )
+    assert response.status_code == 400
+    wiki = Wiki.objects.all()
+    assert len(wiki) == 0
