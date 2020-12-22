@@ -2,7 +2,6 @@ import pytest
 
 from wiki.models import Wiki
 
-
 @pytest.mark.django_db
 def test_wiki_model():
     wiki = Wiki(name="The British Musuem", established="1753", city="London", country="England",
