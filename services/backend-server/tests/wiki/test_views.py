@@ -18,10 +18,9 @@ def test_add_wiki(client, add_wiki):
             "country": "England",
             "collection_size": "8,000,000",
             "visitors": "6,239,983",
-            "website": "www.britishmuseum.org"
+            "website": "www.britishmuseum.org",
         },
-        content_type='application/json'
-
+        content_type="application/json",
     )
     assert response.status_code == 201
     assert response.data["name"] == "The British Museum"
@@ -34,11 +33,7 @@ def test_add_wiki_invalid_json(client):
     wiki = Wiki.objects.all()
     assert len(wiki) == 0
 
-    response = client.post(
-        "/api/v1/wiki/",
-        {},
-        content_type='application/json'
-    )
+    response = client.post("/api/v1/wiki/", {}, content_type="application/json")
     assert response.status_code == 400
     wiki = Wiki.objects.all()
     assert len(wiki) == 0
@@ -46,11 +41,18 @@ def test_add_wiki_invalid_json(client):
 
 @pytest.mark.django_db
 def test_get_single_wiki(client, add_wiki):
-    wiki = add_wiki(name="Louvre Musueum", established="1793", city="Paris",
-                    country="France", collection_size="380,000", visitors="9,600,000", website="www.louvre.fr")
+    wiki = add_wiki(
+        name="Louvre Musueum",
+        established="1793",
+        city="Paris",
+        country="France",
+        collection_size="380,000",
+        visitors="9,600,000",
+        website="www.louvre.fr",
+    )
     response = client.get(f"/api/v1/wiki/{wiki.id}/")
     assert response.status_code == 200
-    assert response.data['name'] == "Louvre Musueum"
+    assert response.data["name"] == "Louvre Musueum"
 
 
 def test_get_single_wiki_wrong_id(client):
@@ -60,10 +62,24 @@ def test_get_single_wiki_wrong_id(client):
 
 @pytest.mark.django_db
 def test_get_all_wiki(client, add_wiki):
-    wiki_one = add_wiki(name="Louvre Musueum", established="1793", city="Paris",
-                        country="France", collection_size="380,000", visitors="9,600,000", website="www.louvre.fr")
-    wiki_two = add_wiki(name="The British Musueum", established="1753", city="London",
-                        country="England", collection_size="8,000,000", visitors="6,239,983", website="www.britishmusuem.org")
+    wiki_one = add_wiki(
+        name="Louvre Musueum",
+        established="1793",
+        city="Paris",
+        country="France",
+        collection_size="380,000",
+        visitors="9,600,000",
+        website="www.louvre.fr",
+    )
+    wiki_two = add_wiki(
+        name="The British Musueum",
+        established="1753",
+        city="London",
+        country="England",
+        collection_size="8,000,000",
+        visitors="6,239,983",
+        website="www.britishmusuem.org",
+    )
     resp = client.get(f"/api/v1/wiki/")
     assert resp.status_code == 200
     assert resp.data[0]["name"] == wiki_one.name

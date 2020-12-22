@@ -9,7 +9,7 @@ def test_valid_wiki_serializer():
         "country": "England",
         "collection_size": "8 million objects",
         "visitors": "6,239,983",
-        "website": "www.britishmuseum.org"
+        "website": "www.britishmuseum.org",
     }
 
     serializer = WikiSerializer(data=valid_serializer_data)
@@ -18,6 +18,7 @@ def test_valid_wiki_serializer():
     assert serializer.data == valid_serializer_data
     assert serializer.errors == {}
 
+
 def test_invalid_wiki_serializer():
     invalid_serializer_data = {
         "name": "The British Musuem",
@@ -25,7 +26,7 @@ def test_invalid_wiki_serializer():
         "city": "London",
         "country": "England",
         "collection_size": "8 million objects",
-        "visitors": "6,239,983"
+        "visitors": "6,239,983",
     }
     serializer = WikiSerializer(data=invalid_serializer_data)
     assert not serializer.is_valid()

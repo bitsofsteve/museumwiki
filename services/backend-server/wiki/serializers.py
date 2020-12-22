@@ -3,8 +3,7 @@ from .models import Wiki
 
 
 class WikiSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Wiki
-        fields = '__all__'
-        read_only_fields = ('id', 'created_date', 'updated_date')
+        fields = "__all__"
+        read_only_fields = ("id", "created_date", "updated_date")

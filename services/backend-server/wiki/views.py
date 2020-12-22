@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from .models import Wiki
-from.serializers import WikiSerializer
+from .serializers import WikiSerializer
 
 
 class WikiList(APIView):
