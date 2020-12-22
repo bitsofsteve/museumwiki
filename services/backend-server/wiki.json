@@ -1,0 +1,47 @@
+[
+    {
+        "model": "wiki.wiki",
+        "pk": 1,
+        "fields": {
+            "name": "The British Museum",
+            "established": "1753",
+            "city": "London",
+            "country": "England",
+            "collection_size": "8,000,000",
+            "visitors": "6,239,983",
+            "website": "www.britishmuseum.org",
+            "created_date": "2020-12-22T06:49:11.525718Z",
+            "updated_date": "2020-12-22T06:49:11.525750Z"
+        }
+    },
+    {
+        "model": "wiki.wiki",
+        "pk": 2,
+        "fields": {
+            "name": "Louvre  Museum",
+            "established": "1793",
+            "city": "Paris",
+            "country": "France",
+            "collection_size": "380,000",
+            "visitors": "9,600,000",
+            "website": "www.louvre.fr",
+            "created_date": "2020-12-22T06:49:11.525718Z",
+            "updated_date": "2020-12-22T06:49:11.525750Z"
+        }
+    },
+    {
+        "model": "wiki.wiki",
+        "pk": 3,
+        "fields": {
+            "name": "Art Gallery of New South Wales",
+            "established": "1874",
+            "city": "Sydney",
+            "country": "Australia",
+            "collection_size": "",
+            "visitors": "1,349,000",
+            "website": "www.artgallery.nsw.gov.au",
+            "created_date": "2020-12-22T06:49:11.525718Z",
+            "updated_date": "2020-12-22T06:49:11.525750Z"
+        }
+    }
+]
