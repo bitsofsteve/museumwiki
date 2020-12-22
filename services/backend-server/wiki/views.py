@@ -8,6 +8,11 @@ from.serializers import WikiSerializer
 
 
 class WikiList(APIView):
+    def get(self, request, format=None):
+        wiki = Wiki.objects.all()
+        serializer = WikiSerializer(wiki, many=True)
+        return Response(serializer.data)
+
     def post(self, request, format=None):
         serializer = WikiSerializer(data=request.data)
         if serializer.is_valid():
