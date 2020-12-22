@@ -28,6 +28,7 @@ def test_add_wiki(client):
     wiki = Wiki.objects.all()
     assert len(wiki) == 1
 
+
 @pytest.mark.django_db
 def test_add_wiki_invalid_json(client):
     wiki = Wiki.objects.all()
@@ -41,3 +42,17 @@ def test_add_wiki_invalid_json(client):
     assert response.status_code == 400
     wiki = Wiki.objects.all()
     assert len(wiki) == 0
+
+
+@pytest.mark.django_db
+def test_get_single_wiki(client):
+    wiki = Wiki.objects.create(name="Louvre Musueum", established="1793", city="Paris",
+                               country="France", collection_size="380,000", visitors="9,600,000", website="www.louvre.fr")
+    response = client.get(f"/api/v1/wiki/{wiki.id}/")
+    assert response.status_code == 200
+    assert response.data['name'] == "Louvre Musueum"
+
+
+def test_get_single_wiki_wrong_id(client):
+    response = client.get(f"/api/v1/wiki/bar/")
+    assert response.status_code == 404
