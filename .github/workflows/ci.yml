@@ -31,4 +31,4 @@ jobs:
           docker login ghcr.io -u ${{ github.repository_owner }} -p ${{ secrets.PAT }} 
           docker pull  $IMAGE:latest || true
           echo $IMAGE
-          docker build ./Dockerfile.prod -t $IMAGE:latest .
+          docker build ./Dockerfile.prod -t museumwiki:latest .
