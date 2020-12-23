@@ -29,7 +29,7 @@ jobs:
       - name: Log into Github Container Registry, Pull & Build a docker image
         run: |
           docker login ghcr.io -u ${{ github.repository_owner }} -p ${{ secrets.PAT }} 
-          docker pull pull $IMAGE:latest || true
+          docker pull pull $IMAGE:latest
           docker build
             --cache-from $IMAGE:latest
             --tag $IMAGE:latest
