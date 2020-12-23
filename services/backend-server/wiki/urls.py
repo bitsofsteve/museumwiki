@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import WikiList, WikiDetail
+from .views import WikiDetail, WikiList
 
 urlpatterns = [
     path("api/v1/wiki/", WikiList.as_view()),

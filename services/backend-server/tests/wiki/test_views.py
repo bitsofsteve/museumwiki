@@ -1,4 +1,3 @@
-import json
 import pytest
 
 from wiki.models import Wiki
@@ -56,7 +55,7 @@ def test_get_single_wiki(client, add_wiki):
 
 
 def test_get_single_wiki_wrong_id(client):
-    response = client.get(f"/api/v1/wiki/bar/")
+    response = client.get("/api/v1/wiki/bar/")
     assert response.status_code == 404
 
 
@@ -80,7 +79,7 @@ def test_get_all_wiki(client, add_wiki):
         visitors="6,239,983",
         website="www.britishmusuem.org",
     )
-    resp = client.get(f"/api/v1/wiki/")
+    resp = client.get("/api/v1/wiki/")
     assert resp.status_code == 200
     assert resp.data[0]["name"] == wiki_one.name
     assert resp.data[1]["name"] == wiki_two.name
