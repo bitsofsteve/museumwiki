@@ -2,5 +2,5 @@ from django.http import JsonResponse
 
 
 def tick(request):
-    data = {"tick": "tock"}
+    data = {"tick": "tock!"}
     return JsonResponse(data)
