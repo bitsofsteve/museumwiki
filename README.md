@@ -1,2 +1,2 @@
 # museumwiki
-[![pipeline status](https://gitlab.com/%{project_path}/-/commits/%{default_branch})](https://gitlab.com/%{project_path}/-/commits/%{default_branch})
+[![pipeline status](https://gitlab.com/cyberdroidmann/museumwiki/badges/main/pipeline.svg)](https://gitlab.com/cyberdroidmann/museumwiki/-/commits/main)
