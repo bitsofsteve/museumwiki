@@ -30,4 +30,4 @@ jobs:
         run: |
           docker login ghcr.io -u ${{ github.repository_owner }} -p ${{ secrets.PAT }} 
           docker pull  $IMAGE:latest || true
-          docker build --cache-from $IMAGE:latest --tag $IMAGE:latest --file ./Dockerfile.prod .
+          docker build --cache-from $IMAGE:latest --tag $IMAGE --file ./Dockerfile.prod .
