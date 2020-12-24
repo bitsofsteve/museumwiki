@@ -136,9 +136,9 @@ def test_update_wiki(client, add_wiki):
             "country": "France",
             "collection_size": "380,000",
             "visitors": "9,600,000",
-            "website": "www.louvre.fr"
+            "website": "www.louvre.fr",
         },
-        content_type="application/json"
+        content_type="application/json",
     )
     assert resp.status_code == 200
     assert resp.data["name"] == "Louvre  Museum"
@@ -152,7 +152,7 @@ def test_update_wiki(client, add_wiki):
 
 @pytest.mark.django_db
 def test_update_wiki_wrong_id(client):
-    resp = client.put(f"/api/v1/wiki/99/")
+    resp = client.put("/api/v1/wiki/99/")
     assert resp.status_code == 404
 
 
