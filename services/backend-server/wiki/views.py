@@ -32,11 +32,8 @@ class WikiDetail(APIView):
         wiki = self.get_object(pk)
         serializer = WikiSerializer(wiki)
         return Response(serializer.data)
-    
+
     def delete(self, request, pk, format=None):
         wiki = self.get_object(pk)
         wiki.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-
-
-

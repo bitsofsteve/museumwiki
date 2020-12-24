@@ -104,9 +104,10 @@ def test_delete_a_wiki(client, add_wiki):
     resp_two = client.delete(f"/api/v1/wiki/{wiki.id}/")
     assert resp_two.status_code == 204
 
-    resp_three = client.get(f"/api/v1/wiki/")
+    resp_three = client.get("/api/v1/wiki/")
     assert resp_three.status_code == 200
     assert len(resp_three.data) == 0
+
 
 @pytest.mark.django_db
 def test_delete_wiki_wrong_id(client):
