@@ -113,3 +113,38 @@ def test_delete_a_wiki(client, add_wiki):
 def test_delete_wiki_wrong_id(client):
     resp = client.delete("/api/v1/wiki/100/")
     assert resp.status_code == 404
+
+
+@pytest.mark.django_db
+def test_update_wiki(client, add_wiki):
+    wiki = add_wiki(
+        name="Louvre Musueum",
+        established="1793",
+        city="Paris",
+        country="France",
+        collection_size="380,000",
+        visitors="9,600,000",
+        website="www.louvre.fr",
+    )
+
+    resp = client.put(
+        f"/api/v1/wiki/{wiki.id}/",
+        {
+            "name": "Louvre  Museum",
+            "established": "1800",
+            "city": "Paris",
+            "country": "France",
+            "collection_size": "380,000",
+            "visitors": "9,600,000",
+            "website": "www.louvre.fr"
+        },
+        content_type="application/json"
+    )
+    assert resp.status_code == 200
+    assert resp.data["name"] == "Louvre  Museum"
+    assert resp.data["established"] == "1800"
+
+    resp_two = client.get(f"/api/v1/wiki/{wiki.id}/")
+    assert resp_two.status_code == 200
+    assert resp_two.data["name"] == "Louvre  Museum"
+    assert resp.data["established"] == "1800"
