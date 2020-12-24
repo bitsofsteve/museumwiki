@@ -7,7 +7,6 @@ services:
     build:
       context: ./services/backend-server
       dockerfile: Dockerfile
-    entrypoint: ["/usr/src/app/entrypoint.sh"]
     volumes:
         - ./services/backend-server/:/usr/src/app/
     ports:
