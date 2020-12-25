@@ -38,7 +38,7 @@ test:
   script:
     - cd services/backend-server
     - python3.8 -m venv venv
-    - source env/bin/activate
+    - source venv/bin/activate
     - pip install -r requirements.txt
     - pip install black flake8 isort pytest pytest-django
     - pytest -p no:warnings
