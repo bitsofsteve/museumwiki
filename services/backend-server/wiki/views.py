@@ -1,9 +1,9 @@
 from django.http import Http404
+from drf_yasg import openapi
+from drf_yasg.utils import swagger_auto_schema
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from drf_yasg import openapi
-from drf_yasg.utils import swagger_auto_schema
 
 from .models import Wiki
 from .serializers import WikiSerializer
@@ -15,7 +15,6 @@ class WikiList(APIView):
         serializer = WikiSerializer(wiki, many=True)
         return Response(serializer.data)
 
-
     @swagger_auto_schema(
         request_body=openapi.Schema(
             type=openapi.TYPE_OBJECT,
@@ -26,10 +25,6 @@ class WikiList(APIView):
                 "country": openapi.Schema(type=openapi.TYPE_STRING),
                 "collection_size": openapi.Schema(type=openapi.TYPE_STRING),
                 "visitors": openapi.Schema(type=openapi.TYPE_STRING),
-
-
-
-
             },
         )
     )
@@ -68,11 +63,7 @@ class WikiDetail(APIView):
                 "country": openapi.Schema(type=openapi.TYPE_STRING),
                 "collection_size": openapi.Schema(type=openapi.TYPE_STRING),
                 "visitors": openapi.Schema(type=openapi.TYPE_STRING),
-
-
-
-
-                },
+            },
         )
     )
     def put(self, request, pk, format=None):

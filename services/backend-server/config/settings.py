@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     "users.apps.UsersConfig",
     "wiki.apps.WikiConfig",
     "rest_framework",
-    "drf_yasg"
+    "drf_yasg",
 ]
 
 MIDDLEWARE = [
@@ -144,11 +144,10 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 AUTH_USER_MODEL = "users.CustomUser"
 
 
+REST_FRAMEWORK = {"DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema"}
 if not DEBUG:
-    REST_FRAMEWORK = {
-        "DEFAULT_RENDERER_CLASSES": ("rest_framework.renderers.JSONRenderer",)
-    }
+    REST_FRAMEWORK["DEFAULT_RENDERER_CLASSES"] = (
+        "rest_framework.renderers.JSONRenderer",
+    )
 
-SWAGGER_SETTINGS = {
-    "USE_SESSION_AUTH": False
-}
+SWAGGER_SETTINGS = {"USE_SESSION_AUTH": False}
