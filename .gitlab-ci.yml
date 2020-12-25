@@ -22,7 +22,6 @@ build:
         --cache-from $IMAGE:latest
         --tag $IMAGE:latest
         --file ./Dockerfile.prod
-        --build-arg SECRET_KEY=$SECRET_KEY
         "."
     - docker push $IMAGE:latest
 
@@ -39,14 +38,13 @@ test:
   script:
     - cd services/backend-server
     - python3.8 -m venv venv
-    - source venv/bin/activate
+    - source env/bin/activate
     - pip install -r requirements.txt
     - pip install black flake8 isort pytest pytest-django
     - pytest -p no:warnings
     - flake8 .
     - black --check --exclude="migrations|env" .
     - isort ./*/*.py --check-only
-    - python manage.py check --deploy --fail-level=WARNING
 
 deploy:
   stage: deploy
@@ -62,7 +60,6 @@ deploy:
     - docker build
         --tag $HEROKU_REGISTRY_IMAGE
         --file ./Dockerfile.prod
-        --build-arg SECRET_KEY=$SECRET_KEY
         "."
     - docker login -u _ -p $HEROKU_AUTH_TOKEN registry.heroku.com
     - docker push $HEROKU_REGISTRY_IMAGE
