@@ -18,11 +18,11 @@ DEBUG = int(os.environ.get("DEBUG", default=0))
 
 ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
 
-# if not DEBUG:
-#     SECURE_HSTS_SECONDS = 3600
+if not DEBUG:
+    SECURE_HSTS_SECONDS = 3600
 #     SECURE_CONTENT_TYPE_NOSNIFF = True
 #     SECURE_BROWSER_XSS_FILTER = True
-#     SECURE_SSL_REDIRECT = True
+    SECURE_SSL_REDIRECT = True
 #     SESSION_COOKIE_SECURE = True
 #     CSRF_COOKIE_SECURE = True
 #     X_FRAME_OPTIONS = "DENY"
