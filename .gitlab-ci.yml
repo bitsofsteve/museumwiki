@@ -43,7 +43,7 @@ test:
     - pip install black flake8 isort pytest pytest-django
     - pytest -p no:warnings
     - flake8 .
-    - black --check --exclude="migrations|env" .
+    - black --check --exclude="migrations|venv" .
     - isort ./*/*.py --check-only
     - python manage.py check --deploy --fail-level=WARNING
 
