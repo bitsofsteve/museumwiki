@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "users.apps.UsersConfig",
     "wiki.apps.WikiConfig",
     "rest_framework",
+    "drf_yasg"
 ]
 
 MIDDLEWARE = [
@@ -147,3 +148,7 @@ if not DEBUG:
     REST_FRAMEWORK = {
         "DEFAULT_RENDERER_CLASSES": ("rest_framework.renderers.JSONRenderer",)
     }
+
+SWAGGER_SETTINGS = {
+    "USE_SESSION_AUTH": False
+}
