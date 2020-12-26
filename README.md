@@ -20,8 +20,8 @@ Currently there are no official Wiki for museums (Still being discussed), this i
 This project is still heavily under developent, but I have released a trivial version 1.0, that is feature complete :)
 
 **Links to API Documentation**
-- [CoreAPI Documentation]()
-- [Swagger Documentation]()
+- [CoreAPI Documentation](https://museumwiki.herokuapp.com/docs/)
+- [Swagger Documentation](https://museumwiki.herokuapp.com/swagger-docs/)
 
 
 ## Setup
@@ -73,6 +73,8 @@ Docker installation for your operating system [here](https://docs.docker.com/get
 **Make code changes with Black and isort:**
 
 ``` $ docker-compose exec wiki black  . ```
+
+
 ``` $ docker-compose exec wiki /bin/sh -c "isort ./*/*.py" ```
 
 
